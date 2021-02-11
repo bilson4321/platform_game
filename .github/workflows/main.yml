@@ -46,11 +46,10 @@ jobs:
       #   with:
       #     name: Test results (all modes)
       #     path: ${{ steps.testRunner.outputs.artifactsPath }}
-      - name: Install python
-        run: PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
       - uses: webbertakken/unity-builder@v0.10
         with:
           projectPath: ${{ matrix.projectPath }}
+          buildMethod: PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           # customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
