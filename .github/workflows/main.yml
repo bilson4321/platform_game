@@ -47,12 +47,15 @@ jobs:
       #     name: Test results (all modes)
       #     path: ${{ steps.testRunner.outputs.artifactsPath }}
       # - uses: webbertakken/unity-builder@v0.10
-      - uses: webbertakken/unity-builder@v1.5
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-          targetPlatform: ${{ matrix.targetPlatform }}
-          # customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
+      #   with:
+      #     projectPath: ${{ matrix.projectPath }}
+      #     unityVersion: ${{ matrix.unityVersion }}
+      #     targetPlatform: ${{ matrix.targetPlatform }}
+      #     # customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
+
+      - name: Build Windows Player
+          run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -projectPath . -buildWindows64Player ./bin-win64/CISample.exe
+
       - uses: actions/upload-artifact@v1
         with:
           name: Build
