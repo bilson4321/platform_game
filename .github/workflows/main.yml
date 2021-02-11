@@ -46,6 +46,7 @@ jobs:
       - uses: webbertakken/unity-builder@v0.10
         with:
           projectPath: ${{ matrix.projectPath }}
+          customImage: gableroux/unity3d:2020.1.13f1-webgl
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           # customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
