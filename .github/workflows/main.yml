@@ -47,6 +47,8 @@ jobs:
       #     name: Test results (all modes)
       #     path: ${{ steps.testRunner.outputs.artifactsPath }}
       - name: Install brotli
+        run: pip install brotli
+      - name: check brotli
         run: python -m pip list
 
       - uses: webbertakken/unity-builder@v0.10
