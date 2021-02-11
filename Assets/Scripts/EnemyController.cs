@@ -5,6 +5,7 @@ namespace Assets.Scripts
 {
     public class EnemyController : MovingObjectController
     {
+        public Transform pfBullet;
         public Rigidbody2D patrolArea;
 
         private float movement = 2.0f;
@@ -47,6 +48,10 @@ namespace Assets.Scripts
             {
                 Debug.Log("Attacking");
                 idleTime = 0.5f;
+                Debug.Log(rigidBody.position);
+                Transform bulletTransform=Instantiate(pfBullet,rigidBody.position+new Vector2(-1.4f,0),Quaternion.identity);
+                Vector3 shootDirection = new Vector3(-1,0);
+                bulletTransform.GetComponent<Projectile>().setup(shootDirection);
             }
         }
 
