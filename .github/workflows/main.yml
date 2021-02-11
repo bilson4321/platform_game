@@ -46,8 +46,8 @@ jobs:
       #   with:
       #     name: Test results (all modes)
       #     path: ${{ steps.testRunner.outputs.artifactsPath }}
-      # - name: Install python
-      #   run: dpkg -l clang-5.0 lldb-5.0 lld-5.0
+      - name: Install python
+        run: PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
       - uses: webbertakken/unity-builder@v0.10
         with:
           projectPath: ${{ matrix.projectPath }}
