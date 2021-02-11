@@ -47,7 +47,8 @@ jobs:
       #     name: Test results (all modes)
       #     path: ${{ steps.testRunner.outputs.artifactsPath }}
       # - uses: webbertakken/unity-builder@v0.10
-      - uses: game-ci/unity-builder@v2.0-alpha-6
+      - name: Unity - Builder
+        uses: game-ci/unity-builder@v2.0-alpha-6
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
