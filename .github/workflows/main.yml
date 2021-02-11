@@ -50,6 +50,12 @@ jobs:
         run: pip install brotli
       - name: check brotli
         run: python -m pip list
+      - name: change directory to brotli
+        run: cd $UNITY_EDITOR_DIR/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Brotli/dist
+      - name: copied brotli
+        run: mv Brotli-0.4.0-py2.7-macosx-10.10-x86_64.egg Brotli-0.4.0-py2.7-macosx-10.10-x86_64.egg.bkup
+      - name: Brotli changed 
+        run: ln -s $PWD/Brotli-0.4.0-py2.7-linux-x86_64.egg Brotli-0.4.0-py2.7-macosx-10.10-x86_64.egg
 
       - uses: webbertakken/unity-builder@v0.10
         with:
