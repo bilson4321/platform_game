@@ -13,16 +13,22 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveSpeed = 8f;
+        float moveSpeed = 6f;
         transform.position += shootDir * moveSpeed * Time.deltaTime;
     }
-    /*
+    
     void DestroyGameObject()
     {
         Destroy(gameObject);
-    }*/
-    private void OnCollisionEnter2D(Collision2D collision)
+    }
+    void OnCollisionEnter2D(Collision2D collision)
     {
-       // DestroyGameObject();
+        Debug.Log("Collided with" + collision.collider.name);
+        if (collision.collider.name != "Dog") { }
+        else if(collision.collider.name != "Cat")
+        {} else
+        {
+            DestroyGameObject();
+        }
     }
 }

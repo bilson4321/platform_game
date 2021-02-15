@@ -7,6 +7,7 @@ namespace Assets.Scripts
     public class PlayerController : MovingObjectController
     {
         public float JumpForce = 1;
+        public Transform pfBullet;
 
         // Start is called before the first frame update
         void Start()
@@ -45,10 +46,27 @@ namespace Assets.Scripts
             {
                 jump();
             }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Transform bulletTransform = Instantiate(pfBullet, rigidBody.position + new Vector2(+1.4f, 0), Quaternion.identity);
+                Vector3 shootDirection = new Vector3(+1, 0);
+                bulletTransform.GetComponent<Projectile>().setup(shootDirection);
+            }
         }
         void jump()
         {
             rigidBody.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+        }
+
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if(collision.collider.tag=="projectile")
+            {
+                takeDamage(15);
+                Debug.Log("Health" + currentHealth);
+                Destroy(collision.collider.gameObject);
+            }
         }
     }
 }

@@ -24,6 +24,10 @@ namespace Assets.Scripts
             {
                 moveEitherWay();
             }
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
         void moveEitherWay()
@@ -47,13 +51,21 @@ namespace Assets.Scripts
             if(collision.name == "Dog")
             {
                 Debug.Log("Attacking");
-                idleTime = 0.5f;
+                idleTime = 5.0f;
                 Debug.Log(rigidBody.position);
                 Transform bulletTransform=Instantiate(pfBullet,rigidBody.position+new Vector2(-1.4f,0),Quaternion.identity);
                 Vector3 shootDirection = new Vector3(-1,0);
                 bulletTransform.GetComponent<Projectile>().setup(shootDirection);
             }
         }
-
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider.tag == "projectile")
+            {
+                takeDamage(15);
+                Debug.Log("Health" + currentHealth);
+                Destroy(collision.collider.gameObject);
+            }
+        }
     }
 }

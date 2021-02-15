@@ -7,6 +7,8 @@ namespace Assets.Scripts
     {
         public Animator animator;
         public Rigidbody2D rigidBody;
+        public int maxHealth=100;
+        public int currentHealth = 0;
 
         public float MovementSpeed = 1;
         ObjectState objectState = ObjectState.idle;
@@ -24,13 +26,18 @@ namespace Assets.Scripts
         // Use this for initialization
         void Start()
         {
-
+            currentHealth = maxHealth;
         }
 
         // Update is called once per frame
         public virtual void Update()
         {
 
+        }
+
+        public void takeDamage(int damagePoint)
+        {
+            currentHealth -= damagePoint;
         }
 
         protected void moveHorizontal(float horizontal)

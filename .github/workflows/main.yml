@@ -1,4 +1,4 @@
-name: Actions 😎
+name: Actions
 
 on:
   pull_request:
@@ -46,20 +46,20 @@ jobs:
       #   with:
       #     name: Test results (all modes)
       #     path: ${{ steps.testRunner.outputs.artifactsPath }}
-      - name: Install brotli
-        run: pip install brotli
-      - name: check brotli
-        run: python -m pip list
+      # - name: Install brotli
+      #   run: pip install brotli
+      # - name: check brotli
+      #   run: python -m pip list
 
-      - name: Build OSX Player
-        run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -projectPath . -buildOSXUniversalPlayer ./bin-osx/CISample.app
+      # - name: Build OSX Player
+      #   run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -projectPath . -buildOSXUniversalPlayer ./bin-osx/CISample.app
 
-      # - uses: webbertakken/unity-builder@v0.10
-      #   with:
-      #     projectPath: ${{ matrix.projectPath }}
-      #     unityVersion: ${{ matrix.unityVersion }}
-      #     targetPlatform: ${{ matrix.targetPlatform }}
-      #     # customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
+      - uses: webbertakken/unity-builder@v0.10
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          # customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
       - uses: actions/upload-artifact@v1
         with:
           name: Build
